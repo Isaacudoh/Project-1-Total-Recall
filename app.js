@@ -11,7 +11,7 @@
 
     const card = document.querySelectorAll(".card");
 
-    let userCardFlip = false;
+    let userFlippedCard = false;
     let firstSelection = "";
     let secondSelection = "";
 
@@ -21,8 +21,22 @@
     function cardFlip() {
         // create and access class list of "cards" and toggle "flip" class
         // Definition: Using classList is a convenient alternative to accessing an element's list of classes as a space-delimited string via element.className.
-        this.classList.toggle('flip');
+        this.classList.add('flip');
         // console.log to confirm that "flip" is attached to "card" on click? this will confirm it flipped?
+        if (!userFlippedCard){
+            // for user 1st click
+            userFlippedCard = true;
+            firstSelection = this;
+
+            // console.log({userFlippedCard, firstSelection}); ==> to test if userFlippedCrad = true
+
+        } else {
+            // for user 2nd click
+            userFlippedCard = false;
+            secondSelection = this;
+
+            console.log({firstSelection, secondSelection});
+        }
     }
 
     card.forEach(card => { // Step 2: loop through the list of card elements into each card (using for each loop)
