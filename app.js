@@ -48,7 +48,7 @@ function checkForMatch(){
             firstSelection.classList.remove("flip");
             secondSelection.classList.remove("flip");
             resetBoard()
-        }, 1000);
+        }, 8000);
     }
 }
 
