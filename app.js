@@ -27,15 +27,27 @@
             // for user 1st click
             userFlippedCard = true;
             firstSelection = this;
-
             // console.log({userFlippedCard, firstSelection}); ==> to test if userFlippedCrad = true
-
         } else {
             // for user 2nd click
             userFlippedCard = false;
             secondSelection = this;
+            
+            // do cards match
 
-            console.log({firstSelection, secondSelection});
+            if (firstSelection.dataset.logo ===
+                secondSelection.dataset.logo){
+                    firstSelection.removeEventListener("click", cardFlip);
+                    secondSelection.removeEventListener("click", cardFlip);
+                } else {
+                    // not a match
+                    firstSelection.classList.removeEventListener("flip");
+                    secondSelection.classList.removeEventListener("flip");
+
+
+
+                }
+
         }
     }
 
