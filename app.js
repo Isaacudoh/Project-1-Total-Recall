@@ -41,11 +41,11 @@
                     secondSelection.removeEventListener("click", cardFlip);
                 } else {
                     // not a match
-                    firstSelection.classList.removeEventListener("flip");
-                    secondSelection.classList.removeEventListener("flip");
-
-
-
+                    setTimeout(() => {
+                        firstSelection.classList.remove("flip");
+                        secondSelection.classList.remove("flip");
+                        resetBoard()
+                    }, 1500);
                 }
 
         }
