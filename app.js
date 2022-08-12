@@ -8,6 +8,7 @@
 // Card flip on click
 
 // Write code that will watch for the boxes (card elements) being clicked on to flip
+// first grab all elements with class card and store in varible card
 
 const card = document.querySelectorAll(".card");
 
@@ -48,7 +49,7 @@ function checkForMatch(){
             firstSelection.classList.remove("flip");
             secondSelection.classList.remove("flip");
             resetBoard()
-        }, 8000);
+        }, 1000);
     }
 }
 
