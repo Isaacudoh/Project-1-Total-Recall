@@ -1,4 +1,4 @@
-# PROJECT 1! **Total Recall: Memory game**
+# **Total Recall: Memory game**
 
 ## Overview
 
