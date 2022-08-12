@@ -9,51 +9,53 @@
 
 // Write code that will watch for the boxes (card elements) being clicked on to flip
 
-    const card = document.querySelectorAll(".card");
+const card = document.querySelectorAll(".card");
 
-    let userFlippedCard = false;
-    let firstSelection = "";
-    let secondSelection = "";
+let userFlippedCard = false;
+let firstSelection = "";
+let secondSelection = "";
 
 
 
     // Step 3: Put it in a function. A.K.A function declaration
-    function cardFlip() {
+function cardFlip() {
         // create and access class list of "cards" and toggle "flip" class
         // Definition: Using classList is a convenient alternative to accessing an element's list of classes as a space-delimited string via element.className.
-        this.classList.add('flip');
+    this.classList.add('flip');
         // console.log to confirm that "flip" is attached to "card" on click? this will confirm it flipped?
-        if (!userFlippedCard){
+    if (!userFlippedCard){
             // for user 1st click
-            userFlippedCard = true;
-            firstSelection = this;
+        userFlippedCard = true;
+        firstSelection = this;
             // console.log({userFlippedCard, firstSelection}); ==> to test if userFlippedCrad = true
-        } else {
+    } else {
             // for user 2nd click
-            userFlippedCard = false;
-            secondSelection = this;
-            
-            // do cards match
+        userFlippedCard = false;
+        secondSelection = this;
 
-            if (firstSelection.dataset.logo ===
-                secondSelection.dataset.logo){
-                    firstSelection.removeEventListener("click", cardFlip);
-                    secondSelection.removeEventListener("click", cardFlip);
-                } else {
-                    // not a match
-                    setTimeout(() => {
-                        firstSelection.classList.remove("flip");
-                        secondSelection.classList.remove("flip");
-                        resetBoard()
-                    }, 1500);
-                }
-
-        }
+        checkForMatch();
     }
+}
 
-    card.forEach(card => { // Step 2: loop through the list of card elements into each card (using for each loop)
-        card.addEventListener("click", cardFlip); // adds event listener (click event) that executes a function "cardFlip" when fired
-    });
+function checkForMatch(){
+    if(firstSelection.dataset.logo === secondSelection.dataset.logo){
+        // Successful match
+        firstSelection.removeEventListener("click", cardFlip);
+        secondSelection.removeEventListener("click", cardFlip);
+    } else {
+        // No-match - unflip card
+        setTimeout (() => {
+            firstSelection.classList.remove("flip");
+            secondSelection.classList.remove("flip");
+            resetBoard()
+        }, 1000);
+    }
+}
+
+
+card.forEach(card => { // Step 2: loop through the list of card elements into each card (using for each loop)
+    card.addEventListener("click", cardFlip); // adds event listener (click event) that executes a function "cardFlip" when fired
+});
 
 
 
